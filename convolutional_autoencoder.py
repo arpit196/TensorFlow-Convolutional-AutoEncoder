@@ -33,7 +33,7 @@ class ConvolutionalAutoencoder(object):
         reconstruction = DeConvolution2D([5, 5, 1, 32], output_shape=tf.shape(x), activation=tf.nn.sigmoid, scope='deconv_2')(unpool2)
 
         # loss function
-        loss = tf.nn.l2_loss(x - reconstruction)  # L2 loss
+        loss = tf.nn.l2_loss(x - reconstruction) + tf.nn.l2_loss(unpool2 - conv1) + tf.nn.l2_loss(deconv1-pool1) # L2 loss
 
         # training
         training = tf.train.AdamOptimizer(1e-4).minimize(loss)
