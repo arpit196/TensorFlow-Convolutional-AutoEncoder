@@ -122,7 +122,7 @@ class ConvolutionalAutoencoder(object):
 
 def main():
     conv_autoencoder = ConvolutionalAutoencoder()
-    # conv_autoencoder.train(batch_size=100, passes=100000, new_training=True)
+    conv_autoencoder.train(batch_size=100, passes=10000, new_training=True)
     conv_autoencoder.reconstruct()
 
 
